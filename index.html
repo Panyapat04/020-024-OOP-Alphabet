@@ -1,0 +1,90 @@
+<head>
+<meta charset="UTF-8">
+<title>ABC for Kids</title>
+
+<link rel="icon" type="image/png" href="image/logo.png">
+<meta name="theme-color" content="#ffd966">
+
+<link rel="stylesheet" href="https://pyscript.net/releases/2024.1.1/core.css">
+<script type="module" src="https://pyscript.net/releases/2024.1.1/core.js"></script>
+</head>
+
+<style>
+body {
+    background: #eaf6ff;
+    font-family: "Comic Sans MS", sans-serif;
+    text-align: center;
+}
+.card {
+    width: 280px;
+    height: 360px;
+    background: white;
+    border-radius: 30px;
+    margin: 40px auto;
+    box-shadow: 0 10px 25px rgba(0,0,0,.15);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    cursor: pointer;
+}
+.letter {
+    font-size: 140px;
+    color: orange;
+}
+#progress {
+    margin-top: 15px;
+    font-size: 18px;
+    color: #444;
+}
+.controls {
+    margin-top: 15px;
+}
+
+button {
+    font-size: 18px;
+    padding: 10px 18px;
+    border: none;
+    border-radius: 15px;
+    background: #ffd966;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+</style>
+</head>
+
+<body>
+
+<h1>🌈 ABC for Kids 🌈</h1>
+
+<div class="card" id="card">
+    <div id="letter" class="letter">A</div>
+    <div>Tap the card!</div>
+</div>
+
+<div class="controls">
+    <button id="prevBtn">⬅️ ย้อนกลับ</button>
+</div>
+
+
+<div id="progress">
+    ⭐ <span id="star">0</span> ดาว <br>
+    เรียนไปแล้ว <span id="count">1</span>/26 ตัว
+</div>
+
+<script>
+function speakFromJS(letter) {
+    const utter = new SpeechSynthesisUtterance(letter);
+    utter.lang = "en-US";
+
+    speechSynthesis.cancel();
+    speechSynthesis.speak(utter);
+}
+</script>
+
+<script type="py" src="alphabet.py"></script>
+
+</body>
+</html>
